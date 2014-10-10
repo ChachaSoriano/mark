@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WorldGeek Australia</title>
+	<link rel="stylesheet" href="themes/mobiletheme.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="js/jquery.mobile.structure-1.4.3.min.css" />
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery_validate.js"></script>
+	<style>
+div.ex {
+    width: 93%;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: auto;
+}
+#forImage{
+width: 93%;
+    padding: 10px;
+	border: 5px solid gray;
+    margin: auto;
+	height:100px;
+}
+#togglethis{
+width: 93%;
+    padding: 10px;
+	border: 5px solid gray;
+    margin: auto;
+	height:100%;
+}
+
+#btnWG,#logout,#leaderBoard{
+	width: 90%;
+    padding: 10px;
+	border: 5px solid #2a70b0;
+	background-color:gray;
+    margin: auto;
+	height:50px;
+	margin-left:auto;
+	margin-right:auto;
+	font-size: 40px;
+}
+
+#btnStartWG{
+width: 90%;
+    padding: 10px;
+	border: 5px solid #2a70b0;
+	background-color:gray;
+    margin: auto;
+	height:100%;
+	margin-left:auto;
+	margin-right:auto;
+}
+#homeBg{
+	position:fixed;
+	height:100%;
+	width:100%;
+
+	background-position: top center;
+	background-size: cover;
+}
+#result,#gameBg{
+	position:fixed;
+	height:100%;
+	width:100%;
+	background-color:gray;
+}
+
+#bgScores{
+
+position:fixed;
+	height:100%;
+	width:100%;
+	background-color:gray;
+	}
+#helps{
+	position:fixed;
+	height:100%;
+	width:100%;
+	background-color:gray;
+}
+
+#relative,#relative2,#relative3 {
+    position: relative;
+    top: 10px;
+	color:white;
+}
+
+#check1,#check2,#check3,#check4,#check5,#check6,#check7,#check8,#check9,#check10{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check11,#check12,#check13,#check14,#check15,#check16,#check17,#check18,#check19,#check20{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check21,#check22,#check23,#check24,#check25,#check26,#check27,#check28,#check29,#check30{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check31,#check32,#check33,#check34,#check35,#check36,#check37,#check38,#check39,#check40{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check41,#check42,#check43,#check44,#check45,#check46,#check47,#check48,#check49,#check50{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+	</style>
+</head>
+<body   style="background-color:gray;" >
+<div data-role="page" style="background-color:gray;" id="home" >
+<img id="homeBg" />
+		
+		<div data-role="content">
+		<br />
+		<img src="source/banner.png"  width="100%">
+		<br /><br /><br />
+		
+		<a data-role="button" id="btnWG" href="#questionWG" style="height:150px; font-weight:bold; text-align:center; vertical-align:middle; line-height:150px;">&nbsp;&nbsp;START</a><br /><br />
+		<a data-role="button" data-mini="true" id="leaderBoard" href="#leader"  onclick="loadAjax()" style="height:150px; font-weight:bold; text-align:center; vertical-align:middle; line-height:150px;">&nbsp;LEADERBOARD</a><br /><br />
+		<a href="#" id="logout"  data-role="button" data-mini="true" style="height:150px; font-weight:bold; text-align:center; vertical-align:middle; line-height:150px;">&nbsp;BACK</a></li>
+	</div>
+</div>
+
+<!--LEADERBOARD -->
+	<div data-role="page" data-theme="b" id="leader" style="background-color:gray;">
+		<img id="bgScores" />
+		
+		<div data-role="content" data-theme="b" style="background-color:gray;">
+		<div id="relative3">
+		<center><h1>HIGH SCORES</h1><div id="inserthere"></div></center>
+		</div>
+		</div>
+	<div data-role="footer" data-position="fixed" style="background-color:gray;">		
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#home" style="font-size:30px; border: 4px solid #2a70b0; color:white;" id="logout">Back</a></li>
+		</ul>
+	</div>
+</div>
+</div> 
+
+
+<div data-role="page" data-theme="b" id="questionWG">
+		<img id="gameBg" />
+		<div data-role="content" data-theme="b">
+		<div id="relative" style="color:white;">
+		<center>
+		<h1>TIMER</h1>
+		<h2 id="showTimer"></h2>
+		<h1>SCORE</h1><h2 id="asd" style="margin-left: auto; margin-right: auto;"></h2>
+		
+		<span id="count"></span>
+		
+		
+		<h1 id="prog2"></h1>
+		<h1 id="questions"></h1>
+		
+		
+		</center>
+<a data-role="button" id="check1" class="q1" style="display:none"><span id="c1"></span></a>
+<a data-role="button" id="check2" class="q1" style="display:none"><span id="c2"></span></a>
+<a data-role="button" id="check3" class="q2" style="display:none"><span id="c4"></span></a>
+<a data-role="button" id="check4" class="q2" style="display:none"><span id="c3"></span></a>
+<a data-role="button" id="check5" class="q3" style="display:none"><span id="c5"></span></a>
+<a data-role="button" id="check6" class="q3" style="display:none"><span id="c6"></span></a>
+<a data-role="button" id="check7" class="q4" style="display:none"><span id="c7"></span></a>
+<a data-role="button" id="check8" class="q4" style="display:none"><span id="c8"></span></a>
+<a data-role="button" id="check9" class="q5" style="display:none"><span id="c9"></span></a>
+<a data-role="button" id="check10" class="q5" style="display:none"><span id="c10"></span></a>
+<a data-role="button" id="check11" class="q6" style="display:none"><span id="c11"></span></a>
+<a data-role="button" id="check12" class="q6" style="display:none"><span id="c12"></span></a>
+<a data-role="button" id="check13" class="q7" style="display:none"><span id="c13"></span></a>
+<a data-role="button" id="check14" class="q7" style="display:none"><span id="c14"></span></a>
+<a data-role="button" id="check15" class="q8" style="display:none"><span id="c15"></span></a>
+<a data-role="button" id="check16" class="q8" style="display:none"><span id="c16"></span></a>
+<a data-role="button" id="check17" class="q9" style="display:none"><span id="c17"></span></a>
+<a data-role="button" id="check18" class="q9" style="display:none"><span id="c18"></span></a>
+<a data-role="button" id="check19" class="q10" style="display:none"><span id="c19"></span></a>
+<a data-role="button" id="check20" class="q10" style="display:none"><span id="c20"></span></a>
+<a data-role="button" id="check21" class="q11" style="display:none"><span id="c21"></span></a>
+<a data-role="button" id="check22" class="q11" style="display:none"><span id="c22"></span></a>
+<a data-role="button" id="check23" class="q12" style="display:none"><span id="c23"></span></a>
+<a data-role="button" id="check24" class="q12" style="display:none"><span id="c24"></span></a>
+<a data-role="button" id="check25" class="q13" style="display:none"><span id="c25"></span></a>
+<a data-role="button" id="check26" class="q13" style="display:none"><span id="c26"></span></a>
+<a data-role="button" id="check27" class="q14" style="display:none"><span id="c27"></span></a>
+<a data-role="button" id="check28" class="q14" style="display:none"><span id="c28"></span></a>
+<!--<a data-role="button" id="check29" class="q15" style="display:none"><span id="c29"></span></a>
+<a data-role="button" id="check30" class="q15" style="display:none"><span id="c30"></span></a>
+<a data-role="button" id="check31" class="q16" style="display:none"><span id="c31"></span></a>
+<a data-role="button" id="check32" class="q16" style="display:none"><span id="c32"></span></a>
+<a data-role="button" id="check33" class="q17" style="display:none"><span id="c33"></span></a>
+<a data-role="button" id="check34" class="q17" style="display:none"><span id="c34"></span></a>
+<a data-role="button" id="check35" class="q18" style="display:none"><span id="c35"></span></a>
+<a data-role="button" id="check36" class="q18" style="display:none"><span id="c36"></span></a>
+<a data-role="button" id="check37" class="q19" style="display:none"><span id="c37"></span></a>
+<a data-role="button" id="check38" class="q19" style="display:none"><span id="c38"></span></a>
+<a data-role="button" id="check39" class="q20" style="display:none"><span id="c39"></span></a>
+<a data-role="button" id="check40" class="q20" style="display:none"><span id="c40"></span></a>-->
+
+
+<button id="splice" style="display:none;" onClick="splice()">next</button>
+</div>
+</div>
+<div data-role="footer" data-position="fixed">		
+<div data-role="navbar">
+<ul>
+<li><a id="quit" style="font-size:30px; color:white; border: 4px solid #2a70b0; background-color:gray;">QUIT</a></li>	
+</ul>
+</div>
+</div>
+</div>
+
+<!-- save online dialog-->
+
+<div data-role="page" data-theme="b" id="saveDialog">
+	<img id="result"/>
+		<div data-role="content">
+		<div id="relative2" style="color:white;">
+		<h1 id="tryAgain"></h1>
+		<form id="savedata" action="javascript:saveOnline();">
+		<h1 style="font-size:30px;">Last Game Score : </h1><input type="text" id="lastscore" disabled style="font-size:30px; border: 4px solid #2a70b0; color:white; background-color:gray;"/>
+		<h1 style="font-size:30px;">Score : </h1><input type="text" id="score"  name="score" style="display:none;"/>
+		<h1 id="score2" style="font-size:30px;"></h1>
+		<input type="text" id="username" name="username" style="display:none;">
+		</form>
+		<button name="submit"  form="savedata" style="font-size:30px; color:white; border: 4px solid #2a70b0; background-color:gray; font-family='Garamond';">SAVE SCORE</button>
+			<button   id="playAgain" style="font-size:30px; color:white; border: 4px solid #2a70b0; background-color:gray; font-family='Garamond';">PLAY AGAIN</button>
+				<button  id="saveScore" style="font-size:30px; color:white; border: 4px solid #2a70b0; background-color:gray; font-family='Garamond';">BACK</button>
+		
+		</div>
+		</div>
+</div>
+
+
+</div> 
+
+<script>
+	$("#playAgain").click(function(){
+		location.href="#home";
+		location.reload();
+		var score=window.localStorage.getItem("score");
+		var changeScore=window.localStorage.setItem("lastscore",score);
+	});
+		$("#saveScore").click(function(){
+		location.href="#home";
+		location.reload();
+		var score=window.localStorage.getItem("score");
+		window.localStorage.setItem("lastscore",score);
+	});
+
+	
+//save online
+function saveOnline(){
+
+var form = $("#savedata");
+         				$.getJSON("phpfiles/savescore.php?callback=?", form.serialize(),function(data)
+         				{
+						alert("Success!")
+						location.href="home.html";
+						var score=window.localStorage.getItem("score");
+						window.localStorage.setItem("lastscore",score);
+         				}).fail(function(data){
+         				alert("Failed to Save");
+         				});
+}
+
+	
+	// leaderboard get onLine
+	function loadAjax(){
+
+		var xmlhttp;
+		if(window.XMLHttpRequest){
+			xmlhttp = new XMLHttpRequest();
+		}else{
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState==4 && xmlhttp.status==200){
+				document.getElementById("inserthere").innerHTML=xmlhttp.responseText;
+		}}
+	xmlhttp.open("GET","phpfiles/leaderboard.php", true);
+		xmlhttp.send();
+	}
+	
+$("#menu").click(function(){
+$("#logout").slideToggle(100).click(function(){
+localStorage.removeItem("datauser");
+location.href="index.html";
+});
+});
+
+$("#back").click(function(){
+location.href="#home";
+});
+
+$("#quit").click(function(){
+location.href="aus.html";
+});
+
+$("#btnWG").click(function(){
+splice();
+});
+
+//questions
+var fruits = ["q1", "q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13","q14"];
+var score=0;
+function splice(){
+document.getElementById("asd").innerHTML=score;
+var rand=Math.floor((Math.random() * 4));
+setTimeout(function(){
+var a=fruits.splice((Math.random() * fruits.length),1);
+if(a=="q1"){
+$(".q1").show();
+document.getElementById("questions").innerHTML="What is the capital city of South Australia?";
+$("#c1").text("a.	Adelaide ");
+$("#c2").text("b.	Brisbane ");
+$("#check1").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q1").hide();
+});
+$("#check2").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q1").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+
+}else if(a=="q2"){
+$(".q2").show();
+document.getElementById("questions").innerHTML="What is the capital city of Tasmania?";
+$("#c4").text("A.	Hobart ");
+$("#c3").text("B.	Canberra ");
+$("#check3").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q2").hide();
+});
+$("#check4").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q2").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+
+}else if(a=="q3"){
+$(".q3").show();
+document.getElementById("questions").innerHTML="What is the capital city of Northern Territory?";
+$("#c5").text("A.	Darwin ");
+$("#c6").text("B.	Melbourne ");
+$("#check5").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q3").hide();
+});
+$("#check6").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q3").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q4"){
+$(".q4").show();
+document.getElementById("questions").innerHTML="What is the capital city of Western Australia?";
+$("#c7").text("A.	Sydney");
+$("#c8").text("B.	Perth ");
+$("#check7").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q4").hide();
+});
+$("#check8").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q4").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q5"){
+$(".q5").show();
+document.getElementById("questions").innerHTML="What is the capital city of Queensland?";
+$("#c9").text("A.	Brisbane");
+$("#c10").text("B.	Melbourne");
+$("#check9").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q5").hide();
+});
+$("#check10").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q5").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q6"){
+$(".q6").show();
+document.getElementById("questions").innerHTML="What is the capital city of Victoria?";
+$("#c11").text("A. Adelaide ");
+$("#c12").text("B. Melbourne ");
+$("#check11").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q6").hide();
+});
+$("#check12").click(function(){
+clearInterval(time);
+score=score+1;
+
+splice();
+$(".q6").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);}else if(a=="q7"){
+$(".q7").show();
+document.getElementById("questions").innerHTML="What is the capital city of New South Wale?";
+$("#c13").text("A. Sydney");
+$("#c14").text("B. Brisbane");
+$("#check13").click(function(){
+score=score+1;
+clearInterval(time);
+splice();
+
+$(".q7").hide();
+});
+$("#check14").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q7").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q8"){
+$(".q8").show();
+document.getElementById("questions").innerHTML="Which state would you go to if you wanted to see Uluru?";
+$("#c15").text("A. Australian Capital Territory");
+$("#c16").text("B. Northern Territory");
+$("#check15").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q8").hide();
+});
+$("#check16").click(function(){
+clearInterval(time);
+score=score+1;
+
+splice();
+$(".q8").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q9"){
+$(".q9").show();
+document.getElementById("questions").innerHTML="In which state would you find the Bungle Bungles and the Pinnacles? ";
+
+$("#c17").text("A. New South Wales ");
+$("#c18").text("B. Western Australia");
+$("#check17").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q9").hide();
+});
+$("#check18").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q9").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q10"){
+$(".q10").show();
+document.getElementById("questions").innerHTML="In which state would you find the Sydney Harbour Bridge and the Opera House?";
+
+$("#c19").text("A. New South Wales");
+$("#c20").text("B. Northern Territory");
+$("#check19").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q10").hide();
+});
+$("#check20").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q10").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q11"){
+$(".q11").show();
+document.getElementById("questions").innerHTML="Which state would you go to if you wanted to visit the Daintree Rainforest? ";
+
+$("#c21").text("A. Queensland ");
+$("#c22").text("B. Tasmania ");
+$("#check21").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q11").hide();
+});
+$("#check22").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q11").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q12"){
+$(".q12").show();
+document.getElementById("questions").innerHTML="In which state would you find the Barossa Valley and the Head of the Bight?";
+
+$("#c23").text("A. South Australia ");
+$("#c24").text("B. Western Australia ");
+$("#check23").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q12").hide();
+});
+$("#check24").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q12").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q13"){
+$(".q13").show();
+document.getElementById("questions").innerHTML="In which state would you find the Cadbury Chocolate Factory?";
+
+$("#c25").text("A. Tasmania");
+$("#c26").text("B. Victoria ");
+$("#check25").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q13").hide();
+});
+$("#check26").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q13").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q14"){
+$(".q14").show();
+document.getElementById("questions").innerHTML="In which state would you find Kakadu National Park?";
+
+$("#c27").text("A. Australian Capital Territory ");
+$("#c28").text("B. Northern Territory ");
+$("#check27").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q14").hide();
+});
+$("#check28").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q14").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==10){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+
+}else if(a=="" || fruits.length==0){
+fruits.splice(0,1);
+window.localStorage.setItem("score",score);
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+}
+},1000);
+}
+$("#logout").click(function(){
+		window.localStorage.removeItem("datauser");
+		location.href="index.html";
+});
+</script>
+
+
+</body>
+</html>
+

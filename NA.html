@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WorldGeek NorthAmerica</title>
+	<link rel="stylesheet" href="themes/mobiletheme.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="js/jquery.mobile.structure-1.4.3.min.css" />
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery.mobile-1.4.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery_validate.js"></script>
+	<style>
+div.ex {
+    width: 93%;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: auto;
+}
+#forImage{
+width: 93%;
+    padding: 10px;
+	border: 5px solid gray;
+    margin: auto;
+	height:100px;
+}
+#togglethis{
+width: 93%;
+    padding: 10px;
+	border: 5px solid gray;
+    margin: auto;
+	height:100%;
+}
+
+#btnWG,#logout,#leaderBoard{
+	width: 90%;
+    padding: 10px;
+	border: 5px solid #2a70b0;
+	background-color:gray;
+    margin: auto;
+	height:50px;
+	margin-left:auto;
+	margin-right:auto;
+	font-size: 40px;
+}
+
+#btnStartWG{
+width: 90%;
+    padding: 10px;
+	border: 5px solid #2a70b0;
+	background-color:gray;
+    margin: auto;
+	height:100%;
+	margin-left:auto;
+	margin-right:auto;
+}
+#homeBg{
+	position:fixed;
+	height:100%;
+	width:100%;
+
+	background-position: top center;
+	background-size: cover;
+}
+#result,#gameBg{
+	position:fixed;
+	height:100%;
+	width:100%;
+	background-color:gray;
+}
+
+#bgScores{
+
+position:fixed;
+	height:100%;
+	width:100%;
+	background-color:gray;
+	}
+#helps{
+	position:fixed;
+	height:100%;
+	width:100%;
+	background-color:gray;
+}
+
+#relative,#relative2,#relative3 {
+    position: relative;
+    top: 10px;
+	color:white;
+}
+
+#check1,#check2,#check3,#check4,#check5,#check6,#check7,#check8,#check9,#check10{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check11,#check12,#check13,#check14,#check15,#check16,#check17,#check18,#check19,#check20{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check21,#check22,#check23,#check24,#check25,#check26,#check27,#check28,#check29,#check30{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check31,#check32,#check33,#check34,#check35,#check36,#check37,#check38,#check39,#check40{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check41,#check42,#check43,#check44,#check45,#check46,#check47,#check48,#check49,#check50{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+#check51,#check52,#check53,#check54,#check55,#check56,#check57,#check58,#check59,#check60{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check61,#check62,#check63,#check64,#check65,#check66,#check67,#check68,#check69,#check70{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check71,#check72,#check73,#check74,#check75,#check76,#check77,#check78,#check79,#check80{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check81,#check82,#check83,#check84,#check85,#check86,#check87,#check88,#check89,#check90{
+background-color:gray;
+border: 4px solid 2a70b00; 
+color:white;
+}
+
+#check91,#check92,#check93,#check94,#check95,#check96,#check97,#check98,#check99,#check100{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+#check100,#check102,#check103,#check104,#check105,#check106,#check107,#check108,#check109,#check110{
+background-color:gray;
+border: 4px solid #2a70b0; 
+color:white;
+}
+
+
+
+	</style>
+</head>
+<body   style="background-color:gray;" >
+<div data-role="page" style="background-color:gray;" id="home" >
+<img id="homeBg" />
+		
+		<div data-role="content">
+		<br />
+		<img src="source/banner.png"  width="100%">
+		<br /><br /><br />
+		
+		<a data-role="button" id="btnWG" href="#questionWG" style="height:150px; font-weight:bold; text-align:center; vertical-align:middle; line-height:150px;">&nbsp;&nbsp;START</a><br /><br />
+		<a data-role="button" data-mini="true" id="leaderBoard" href="#leader"  onclick="loadAjax()" style="height:150px; font-weight:bold; text-align:center; vertical-align:middle; line-height:150px;">&nbsp;LEADERBOARD</a><br /><br />
+		<a href="#" id="logout"  data-role="button" data-mini="true" style="height:150px; font-weight:bold; text-align:center; vertical-align:middle; line-height:150px;">&nbsp;BACK</a></li>
+	</div>
+</div>
+
+<!--LEADERBOARD -->
+	<div data-role="page" data-theme="b" id="leader" style="background-color:gray;">
+		<img id="bgScores" />
+		
+		<div data-role="content" data-theme="b" style="background-color:gray;">
+		<div id="relative3">
+		<center><h1>HIGH SCORES</h1><div id="inserthere"></div></center>
+		</div>
+		</div>
+	<div data-role="footer" data-position="fixed" style="background-color:gray;">		
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#home" style="font-size:30px; border: 4px solid #2a70b0; color:white;" id="logout">Back</a></li>
+		</ul>
+	</div>
+</div>
+</div> 
+
+
+<div data-role="page" data-theme="b" id="questionWG">
+		<img id="gameBg" />
+		<div data-role="content" data-theme="b">
+		<div id="relative" style="color:white;">
+		<center>
+		<h1>TIMER</h1>
+		<h2 id="showTimer"></h2>
+		<h1>SCORE</h1><h2 id="asd" style="margin-left: auto; margin-right: auto;"></h2>
+		
+		<span id="count"></span>
+		
+		
+		<h1 id="prog2"></h1>
+		<h1 id="questions"></h1>
+		
+		
+		</center>
+<a data-role="button" id="check1" class="q1" style="display:none"><span id="c1"></span></a>
+<a data-role="button" id="check2" class="q1" style="display:none"><span id="c2"></span></a>
+<a data-role="button" id="check3" class="q2" style="display:none"><span id="c4"></span></a>
+<a data-role="button" id="check4" class="q2" style="display:none"><span id="c3"></span></a>
+<a data-role="button" id="check5" class="q3" style="display:none"><span id="c5"></span></a>
+<a data-role="button" id="check6" class="q3" style="display:none"><span id="c6"></span></a>
+<a data-role="button" id="check7" class="q4" style="display:none"><span id="c7"></span></a>
+<a data-role="button" id="check8" class="q4" style="display:none"><span id="c8"></span></a>
+<a data-role="button" id="check9" class="q5" style="display:none"><span id="c9"></span></a>
+<a data-role="button" id="check10" class="q5" style="display:none"><span id="c10"></span></a>
+<a data-role="button" id="check11" class="q6" style="display:none"><span id="c11"></span></a>
+<a data-role="button" id="check12" class="q6" style="display:none"><span id="c12"></span></a>
+<a data-role="button" id="check13" class="q7" style="display:none"><span id="c13"></span></a>
+<a data-role="button" id="check14" class="q7" style="display:none"><span id="c14"></span></a>
+<a data-role="button" id="check15" class="q8" style="display:none"><span id="c15"></span></a>
+<a data-role="button" id="check16" class="q8" style="display:none"><span id="c16"></span></a>
+<a data-role="button" id="check17" class="q9" style="display:none"><span id="c17"></span></a>
+<a data-role="button" id="check18" class="q9" style="display:none"><span id="c18"></span></a>
+<a data-role="button" id="check19" class="q10" style="display:none"><span id="c19"></span></a>
+<a data-role="button" id="check20" class="q10" style="display:none"><span id="c20"></span></a>
+<a data-role="button" id="check21" class="q11" style="display:none"><span id="c21"></span></a>
+<a data-role="button" id="check22" class="q11" style="display:none"><span id="c22"></span></a>
+<a data-role="button" id="check23" class="q12" style="display:none"><span id="c23"></span></a>
+<a data-role="button" id="check24" class="q12" style="display:none"><span id="c24"></span></a>
+<a data-role="button" id="check25" class="q13" style="display:none"><span id="c25"></span></a>
+<a data-role="button" id="check26" class="q13" style="display:none"><span id="c26"></span></a>
+<a data-role="button" id="check27" class="q14" style="display:none"><span id="c27"></span></a>
+<a data-role="button" id="check28" class="q14" style="display:none"><span id="c28"></span></a>
+<a data-role="button" id="check29" class="q15" style="display:none"><span id="c29"></span></a>
+<a data-role="button" id="check30" class="q15" style="display:none"><span id="c30"></span></a>
+<a data-role="button" id="check31" class="q16" style="display:none"><span id="c31"></span></a>
+<a data-role="button" id="check32" class="q16" style="display:none"><span id="c32"></span></a>
+<a data-role="button" id="check33" class="q17" style="display:none"><span id="c33"></span></a>
+<a data-role="button" id="check34" class="q17" style="display:none"><span id="c34"></span></a>
+<a data-role="button" id="check35" class="q18" style="display:none"><span id="c35"></span></a>
+<a data-role="button" id="check36" class="q18" style="display:none"><span id="c36"></span></a>
+<a data-role="button" id="check37" class="q19" style="display:none"><span id="c37"></span></a>
+<a data-role="button" id="check38" class="q19" style="display:none"><span id="c38"></span></a>
+<a data-role="button" id="check39" class="q20" style="display:none"><span id="c39"></span></a>
+<a data-role="button" id="check40" class="q20" style="display:none"><span id="c40"></span></a>
+<a data-role="button" id="check41" class="q21" style="display:none"><span id="c41"></span></a>
+<a data-role="button" id="check42" class="q21" style="display:none"><span id="c42"></span></a>
+<a data-role="button" id="check43" class="q22" style="display:none"><span id="c43"></span></a>
+<a data-role="button" id="check44" class="q22" style="display:none"><span id="c44"></span></a>
+<a data-role="button" id="check45" class="q23" style="display:none"><span id="c45"></span></a>
+<a data-role="button" id="check46" class="q23" style="display:none"><span id="c46"></span></a>
+<a data-role="button" id="check47" class="q24" style="display:none"><span id="c47"></span></a>
+<a data-role="button" id="check48" class="q24" style="display:none"><span id="c48"></span></a>
+<a data-role="button" id="check49" class="q25" style="display:none"><span id="c49"></span></a>
+<a data-role="button" id="check50" class="q25" style="display:none"><span id="c50"></span></a>
+<a data-role="button" id="check51" class="q26" style="display:none"><span id="c51"></span></a>
+<a data-role="button" id="check52" class="q26" style="display:none"><span id="c52"></span></a>
+<a data-role="button" id="check53" class="q27" style="display:none"><span id="c53"></span></a>
+<a data-role="button" id="check54" class="q27" style="display:none"><span id="c54"></span></a>
+<a data-role="button" id="check55" class="q28" style="display:none"><span id="c55"></span></a>
+<a data-role="button" id="check56" class="q28" style="display:none"><span id="c56"></span></a>
+<a data-role="button" id="check57" class="q29" style="display:none"><span id="c57"></span></a>
+<a data-role="button" id="check58" class="q29" style="display:none"><span id="c58"></span></a>
+<a data-role="button" id="check59" class="q30" style="display:none"><span id="c59"></span></a>
+<a data-role="button" id="check60" class="q30" style="display:none"><span id="c60"></span></a>
+<!--<a data-role="button" id="check61" class="q31" style="display:none"><span id="c61"></span></a>
+<a data-role="button" id="check62" class="q31" style="display:none"><span id="c62"></span></a>
+<a data-role="button" id="check63" class="q32" style="display:none"><span id="c63"></span></a>
+<a data-role="button" id="check64" class="q32" style="display:none"><span id="c64"></span></a>
+<a data-role="button" id="check65" class="q33" style="display:none"><span id="c65"></span></a>
+<a data-role="button" id="check66" class="q33" style="display:none"><span id="c66"></span></a>
+<a data-role="button" id="check67" class="q34" style="display:none"><span id="c67"></span></a>
+<a data-role="button" id="check68" class="q34" style="display:none"><span id="c68"></span></a>
+<a data-role="button" id="check69" class="q35" style="display:none"><span id="c69"></span></a>
+<a data-role="button" id="check70" class="q35" style="display:none"><span id="c70"></span></a>
+<a data-role="button" id="check71" class="q36" style="display:none"><span id="c71"></span></a>
+<a data-role="button" id="check72" class="q36" style="display:none"><span id="c72"></span></a>
+<a data-role="button" id="check73" class="q37" style="display:none"><span id="c73"></span></a>
+<a data-role="button" id="check74" class="q37" style="display:none"><span id="c74"></span></a>
+<a data-role="button" id="check75" class="q38" style="display:none"><span id="c75"></span></a>
+<a data-role="button" id="check76" class="q38" style="display:none"><span id="c76"></span></a>
+<a data-role="button" id="check77" class="q39" style="display:none"><span id="c77"></span></a>
+<a data-role="button" id="check78" class="q39" style="display:none"><span id="c78"></span></a>
+<a data-role="button" id="check79" class="q40" style="display:none"><span id="c79"></span></a>
+<a data-role="button" id="check80" class="q40" style="display:none"><span id="c80"></span></a>
+<a data-role="button" id="check81" class="q41" style="display:none"><span id="c81"></span></a>
+<a data-role="button" id="check82" class="q41" style="display:none"><span id="c82"></span></a>
+<a data-role="button" id="check83" class="q42" style="display:none"><span id="c83"></span></a>
+<a data-role="button" id="check84" class="q42" style="display:none"><span id="c84"></span></a>
+<a data-role="button" id="check85" class="q43" style="display:none"><span id="c85"></span></a>
+<a data-role="button" id="check86" class="q43" style="display:none"><span id="c86"></span></a>
+<a data-role="button" id="check87" class="q44" style="display:none"><span id="c87"></span></a>
+<a data-role="button" id="check88" class="q44" style="display:none"><span id="c88"></span></a>
+<a data-role="button" id="check89" class="q45" style="display:none"><span id="c89"></span></a>
+<a data-role="button" id="check90" class="q45" style="display:none"><span id="c90"></span></a>
+<a data-role="button" id="check91" class="q46" style="display:none"><span id="c91"></span></a>
+<a data-role="button" id="check92" class="q46" style="display:none"><span id="c92"></span></a>
+<a data-role="button" id="check93" class="q47" style="display:none"><span id="c93"></span></a>
+<a data-role="button" id="check94" class="q47" style="display:none"><span id="c94"></span></a>
+<a data-role="button" id="check95" class="q48" style="display:none"><span id="c95"></span></a>
+<a data-role="button" id="check96" class="q48" style="display:none"><span id="c96"></span></a>
+<a data-role="button" id="check97" class="q49" style="display:none"><span id="c97"></span></a>
+<a data-role="button" id="check98" class="q49" style="display:none"><span id="c98"></span></a>
+<a data-role="button" id="check99" class="q50" style="display:none"><span id="c99"></span></a>
+<a data-role="button" id="check100" class="q50" style="display:none"><span id="c100"></span></a>-->
+
+
+<button id="splice" style="display:none;" onClick="splice()">next</button>
+</div>
+</div>
+<div data-role="footer" data-position="fixed">		
+<div data-role="navbar">
+<ul>
+<li><a id="quit" style="font-size:30px; color:white; border: 4px solid #2a70b0; background-color:gray;">QUIT</a></li>	
+</ul>
+</div>
+</div>
+</div>
+
+<!-- save online dialog-->
+
+<div data-role="page" data-theme="b" id="saveDialog">
+	<img id="result"/>
+		<div data-role="content">
+		<div id="relative2" style="color:white;">
+		<h1 id="tryAgain"></h1>
+		<form id="savedata" action="javascript:saveOnline();">
+		<h1 style="font-size:30px;">Last Game Score : </h1><input type="text" id="lastscore" disabled style="font-size:30px; border: 4px solid #2a70b0; color:white; background-color:gray;"/>
+		<h1 style="font-size:30px;">Score : </h1><input type="text" id="score"  name="score" style="display:none;"/>
+		<h1 id="score2" style="font-size:30px;"></h1>
+		<input type="text" id="username" name="username" style="display:none;">
+		</form>
+		<button name="submit"  form="savedata" style="font-size:30px; color:white; border: 4px solid #2a70b0; background-color:gray; font-family='Garamond';">SAVE SCORE</button>
+			<button   id="playAgain" style="font-size:30px; color:white; border: 4px solid #2a70b0; background-color:gray; font-family='Garamond';">PLAY AGAIN</button>
+				<button  id="saveScore" style="font-size:30px; color:white; border: 4px solid #2a70b0; background-color:gray; font-family='Garamond';">BACK</button>
+		
+		</div>
+		</div>
+</div>
+
+
+</div> 
+
+<script>
+	$("#playAgain").click(function(){
+		location.href="#home";
+		location.reload();
+		var score=window.localStorage.getItem("score");
+		var changeScore=window.localStorage.setItem("lastscore",score);
+	});
+		$("#saveScore").click(function(){
+		location.href="#home";
+		location.reload();
+		var score=window.localStorage.getItem("score");
+		window.localStorage.setItem("lastscore",score);
+	});
+
+	
+//save online
+function saveOnline(){
+
+var form = $("#savedata");
+         				$.getJSON("phpfiles/savescore.php?callback=?", form.serialize(),function(data)
+         				{
+						alert("Success!")
+						location.href="NA.html";
+						var score=window.localStorage.getItem("score");
+						window.localStorage.setItem("lastscore",score);
+         				}).fail(function(data){
+         				alert("Failed to Save");
+         				});
+}
+
+	
+	// leaderboard get onLine
+	function loadAjax(){
+
+		var xmlhttp;
+		if(window.XMLHttpRequest){
+			xmlhttp = new XMLHttpRequest();
+		}else{
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState==4 && xmlhttp.status==200){
+				document.getElementById("inserthere").innerHTML=xmlhttp.responseText;
+		}}
+	xmlhttp.open("GET","phpfiles/leaderboard.php", true);
+		xmlhttp.send();
+	}
+	
+$("#menu").click(function(){
+$("#logout").slideToggle(100).click(function(){
+localStorage.removeItem("datauser");
+location.href="index.html";
+});
+});
+
+$("#back").click(function(){
+location.href="#home";
+});
+
+$("#quit").click(function(){
+location.href="NA.html";
+});
+
+$("#btnWG").click(function(){
+splice();
+});
+
+//questions
+var fruits = ["q1", "q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13","q14","q15","q16","q17","q18","q19","q20","q21","q22","q23","q24","q25","q26","q27","q28","q29","q30"];
+var score=0;
+function splice(){
+document.getElementById("asd").innerHTML=score;
+var rand=Math.floor((Math.random() * 4));
+setTimeout(function(){
+var a=fruits.splice((Math.random() * fruits.length),1);
+if(a=="q1"){
+$(".q1").show();
+document.getElementById("questions").innerHTML="Which is the largest island in the world and where it is situated ?";
+$("#c1").text("a.	Greenland");
+$("#c2").text("b.	Indonesia");
+$("#check1").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q1").hide();
+});
+$("#check2").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q1").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+
+}else if(a=="q2"){
+$(".q2").show();
+document.getElementById("questions").innerHTML="What is Cordillera and where it is situated ?";
+$("#c4").text("A.	Cordillera is a chain of parallel mountain ranges situated - North America.");
+$("#c3").text("B.	In Cordillera Tibet, south America");
+$("#check3").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q2").hide();
+});
+$("#check4").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q2").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+
+}else if(a=="q3"){
+$(".q3").show();
+document.getElementById("questions").innerHTML="What are Canyons ?";
+$("#c5").text("A.	Long gorges are called Canyons");
+$("#c6").text("B.	The twin fireballs called Canyons");
+$("#check5").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q3").hide();
+});
+$("#check6").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q3").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q4"){
+$(".q4").show();
+document.getElementById("questions").innerHTML="Where is the Great Canyon situated ?";
+$("#c7").text("A.	Argentina");
+$("#c8").text("B.	California");
+$("#check7").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q4").hide();
+});
+$("#check8").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q4").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q5"){
+$(".q5").show();
+document.getElementById("questions").innerHTML="Where the Yellowstone National Park is situated ?";
+$("#c9").text("A.	USA");
+$("#c10").text("B.	New York");
+$("#check9").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+$(".q5").hide();
+});
+$("#check10").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+$(".q5").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER!";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q6"){
+$(".q6").show();
+document.getElementById("questions").innerHTML="What is the Canadian shield ?";
+$("#c11").text("A. is used in WorldWar2");
+$("#c12").text("B. oldest rocks found in this region");
+$("#check11").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q6").hide();
+});
+$("#check12").click(function(){
+clearInterval(time);
+score=score+1;
+
+splice();
+$(".q6").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);}else if(a=="q7"){
+$(".q7").show();
+document.getElementById("questions").innerHTML="Where the famous Niagra Falls are located ?";
+$("#c13").text("A. Between the USA and Canada.");
+$("#c14").text("B. Between Thailand and Philippines");
+$("#check13").click(function(){
+score=score+1;
+clearInterval(time);
+splice();
+
+$(".q7").hide();
+});
+$("#check14").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q7").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q8"){
+$(".q8").show();
+document.getElementById("questions").innerHTML="Which is the most important river of North America ?";
+$("#c15").text("A. Columbia River");
+$("#c16").text("B. Mississippi River");
+$("#check15").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q8").hide();
+});
+$("#check16").click(function(){
+clearInterval(time);
+score=score+1;
+
+splice();
+$(".q8").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q9"){
+$(".q9").show();
+document.getElementById("questions").innerHTML="What are Prairies ?";
+
+$("#c17").text("A. The dried leaves of the tree");
+$("#c18").text("B. The temperate grasslands");
+$("#check17").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q9").hide();
+});
+$("#check18").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q9").hide();
+});
+
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q10"){
+$(".q10").show();
+document.getElementById("questions").innerHTML="What are the Grand Banks ?";
+
+$("#c19").text("A. Fishing ground off the coast of Newfoundland in North America.");
+$("#c20").text("B. Popular Bank company in North America");
+$("#check19").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q10").hide();
+});
+$("#check20").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q10").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q11"){
+$(".q11").show();
+document.getElementById("questions").innerHTML="What the country Cuba of North America is known for?";
+
+$("#c21").text("A. Sugar and Cigars.");
+$("#c22").text("B. Sugar and Coffee");
+$("#check21").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q11").hide();
+});
+$("#check22").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q11").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q12"){
+$(".q12").show();
+document.getElementById("questions").innerHTML="What are expressways or freeways ?";
+
+$("#c23").text("A. These are multilane roads meant for high speed traffic.");
+$("#c24").text("B. These are for the street racers for them to race.");
+$("#check23").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q12").hide();
+});
+$("#check24").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q12").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q13"){
+$(".q13").show();
+document.getElementById("questions").innerHTML="Which canal connects the Atlantic and Pacific oceans ?";
+
+$("#c25").text("A. Panama canal");
+$("#c26").text("B. Sumablay canal");
+$("#check25").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q13").hide();
+});
+$("#check26").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q13").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q14"){
+$(".q14").show();
+document.getElementById("questions").innerHTML="Where the corn and cotton belts are situated in the world?";
+
+$("#c27").text("A. USA");
+$("#c28").text("B. Colorado");
+$("#check27").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q14").hide();
+});
+$("#check28").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q14").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q15"){
+$(".q15").show();
+document.getElementById("questions").innerHTML="Which country in the world is the largest exporter food ?";
+
+$("#c29").text("A. USA");
+$("#c30").text("B. China");
+$("#check29").click(function(){
+clearInterval(time);
+
+score=score+1;
+splice();
+$(".q15").hide();
+});
+$("#check30").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q15").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q16"){
+$(".q16").show();
+document.getElementById("questions").innerHTML="Which country of the world is the largest producer of Soyabean ?";
+
+$("#c31").text("A. Philippines'");
+$("#c32").text("B. USA'");
+$("#check31").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q16").hide();
+});
+$("#check32").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q16").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q17"){
+$(".q17").show();
+document.getElementById("questions").innerHTML="What is the most important cash crop of the USA ?";
+
+$("#c33").text("A. Cloth");
+$("#c34").text("B. Cotton");
+$("#check33").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q17").hide();
+});
+$("#check34").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q17").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q18"){
+$(".q18").show();
+document.getElementById("questions").innerHTML="What are ranches?";
+
+$("#c35").text("A. Natural habitat of horses");
+$("#c36").text("B. Large farm of Beef cattle and horses");
+$("#check35").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q18").hide();
+});
+$("#check36").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q18").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q19"){
+$(".q19").show();
+document.getElementById("questions").innerHTML="Which country in the world is the largest producer of meat ?";
+
+$("#c37").text("A. Africa");
+$("#c38").text("B. USA");
+$("#check37").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q19").hide();
+});
+$("#check38").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q19").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q20"){
+$(".q20").show();
+document.getElementById("questions").innerHTML="Which is the most important industry of the USA ?";
+
+$("#c39").text("A. Cloth and Cotton");
+$("#c40").text("B. Iron and Steel.")
+$("#check39").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q20").hide();
+});
+$("#check40").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q20").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q21"){
+$(".q21").show();
+document.getElementById("questions").innerHTML="Which city of the USA is the largest centre of Iron and Steel ?";
+
+$("#c41").text("A. Pittusburgh.");
+$("#c42").text("B. Afghanistan");
+$("#check41").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q21").hide();
+});
+$("#check42").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q21").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q22"){
+$(".q22").show();
+document.getElementById("questions").innerHTML="Which city of the USA is famous for automobile production?";
+
+$("#c43").text("A. Detroit");
+$("#c44").text("B. Denver");
+$("#check43").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q22").hide();
+});
+$("#check44").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q22").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q23"){
+$(".q23").show();
+document.getElementById("questions").innerHTML="Los Angeles, an important city of the USA is famous for what ?";
+
+$("#c45").text("A. Film production.");
+$("#c46").text("B. Song composition");
+$("#check45").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q23").hide();
+});
+$("#check46").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q23").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q24"){
+$(".q24").show();
+document.getElementById("questions").innerHTML="Which city of the USA is famous for software and computer oriented industries?";
+
+$("#c47").text("A. San Francisco");
+$("#c48").text("B. Detroit");
+$("#check47").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q24").hide();
+});
+$("#check48").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q24").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q25"){
+$(".q25").show();
+document.getElementById("questions").innerHTML="Which railway junction of the world is the largest?";
+$("#c49").text("A. Chicago in the USA.");
+$("#c50").text("B. Detroit in the USA.");
+$("#check49").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q25").hide();
+});
+$("#check50").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q25").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q26"){
+$(".q26").show();
+document.getElementById("questions").innerHTML="Which is the most busiest airport in the world?";
+$("#c51").text("A. New York (USA)");
+$("#c52").text("B. NAIA (Philippines)");
+$("#check51").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q26").hide();
+});
+$("#check52").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q26").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q27"){
+$(".q27").show();
+document.getElementById("questions").innerHTML="Which is the most busiest seaport in the world?";
+
+$("#c53").text("A. New York");
+$("#c54").text("B. Subic(Philippines)");
+$("#check53").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q27").hide();
+});
+$("#check54").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q27").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q28"){
+$(".q28").show();
+document.getElementById("questions").innerHTML="Which city of the USA is the largest?";
+
+$("#c55").text("A. Greenland");
+$("#c56").text("B. New York.");
+$("#check55").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q28").hide();
+});
+$("#check56").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q28").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q29"){
+$(".q29").show();
+document.getElementById("questions").innerHTML="Who are the original inhabitants of Canada?";
+
+$("#c57").text("A. Squaters");
+$("#c58").text("B. Eskimos");
+$("#check57").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q29").hide();
+});
+$("#check58").click(function(){
+clearInterval(time);
+score=score+1;
+splice();
+
+$(".q29").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+}else if(a=="q30"){
+$(".q30").show();
+document.getElementById("questions").innerHTML="Which two countries of the world have the longest common boundary?";
+
+$("#c59").text("A. The USA and Mississippi.");
+$("#c60").text("B. The USA and Canada.");
+$("#check59").click(function(){
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+
+$(".q30").hide();
+});
+$("#check60").click(function(){
+score=score+1;
+splice();
+clearInterval(time);
+
+$(".q30").hide();
+});
+var timer=0;
+var time=setInterval(function () {
+timer=timer+1;
+$("#showTimer").html(timer);
+if(timer==20){
+alert("times up!");
+window.localStorage.setItem("score",score);
+document.getElementById("tryAgain").innerHTML="GAME OVER";
+document.getElementById("score2").innerHTML= score;
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+clearInterval(time);
+}
+}, 1000);
+
+}else if(a=="" || fruits.length==0){
+fruits.splice(0,1);
+window.localStorage.setItem("score",score);
+var getScore=window.localStorage.getItem("score");
+document.getElementById("score").value=getScore;
+var getlastscore=window.localStorage.getItem("lastscore");
+document.getElementById("lastscore").value=getlastscore;
+var getUsername=window.localStorage.getItem("datauser");
+document.getElementById("username").value=getUsername;
+location.href="#saveDialog";
+
+}
+},1000);
+}
+$("#logout").click(function(){
+		window.localStorage.removeItem("datauser");
+		location.href="index.html";
+});
+</script>
+
+
+</body>
+</html>
+

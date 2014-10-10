@@ -1,0 +1,460 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+	<meta name="viewport" content="width=device-width, initial-scale=.45, maximum-scale=.45, user-scalable=no">
+	
+        <style>
+            #ccontainer{
+                        width:1000px;
+                        margin: 0 auto;
+                        margin-top:100px;
+						position
+                         }
+
+	time{
+			position:absolute;
+			}
+			
+			#core{
+			position:absolute;
+						 #myCanvas {
+                      //background:#FFFFFF;
+            }
+
+        .auto-style1 {
+			text-align: center;
+		}
+
+        .auto-style3 {
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+		.auto-style7 {
+			text-align: center;
+			font-size: xx-large;
+			font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+			color: #000000;
+		}
+		.auto-style8 {
+			margin-top: 0px;
+	margin-right: 20px;
+}
+		.auto-style9 {
+			font-family: "Arial Rounded MT Bold";
+		}
+
+        .auto-style10 {
+	margin-right: 17px;
+}
+
+        </style>
+
+       
+        <script>
+		
+		var d=new Date();
+					mytime=d.getSeconds();
+					mytime=d.getMinutes();
+					myTime=setInterval(function(){myTimer1()},1000);  
+    			
+    				
+                    var m=10;
+					function myTimer1()
+					{
+					var time=document.getElementById("time").value=m;
+					m--;
+					document.getElementById("time").value=m;
+					if(m==0)
+					{
+					EndQuiz();
+					clearTimeout(myTime);
+					clearInterval(myTime);
+					}
+					}    
+		
+            window.onload = function(){
+
+                      var canvas = document.getElementById("myCanvas");
+                      var context = canvas.getContext("2d");
+                      var quizbg1 = new Image();
+					      var bg = new Image();
+						  
+						  var eyeopen = new Image();
+                      var Question = new String;
+                      var Option1 = new String;
+                      var Option2 = new String;
+                      var Option3 = new String;
+                      var mx=0;
+                      var my=0;
+                      var CorrectAnswer = 0;
+                      var qnumber = 0;
+                      var rightanswers=0;
+                      var wronganswers=0;
+					  
+					  var right=1;
+                      var wrong=1;
+					  var score = 0;
+					  
+					  
+                      var QuizFinished = false;
+                      var lock = false;
+                      var textpos1=45;
+                      var textpos2=165;
+                      var textpos3=315;
+                      var textpos4=450;
+                      var Questions = [" In what year did William the Conqueror become King of England?",
+					  "2. Which empire controlled most of the area around the Mediterranean Sea when Jesus was in Judea?",
+					  "3. Who was the first American President?",
+					  "4. Eva Peron was a very special lady in her country until she died in 1952 - which country was this?",
+					  "5. What was the name of the Frenchman who was a very clever soldier and helped his country win lots of battles in the eighteenth and nineteenth centuries?",
+					  "6. Who is credited with discovering America?",
+					  "7. The telephone was first invented to help the deaf - but do you know who patented the design?",
+					  "8. Which country held the first Olympic Games? (This was also the country which held Games similar to the Olympic Games thousands of years ago).",
+					  "9. Which English lady went to the Crimea to nurse the soldiers and became famous?",
+					  "10. What was the name of the first person to set foot on the moon?",
+					  "11. World War I began in which year?",
+					  "12. Adolf Hitler was born in which country?",
+					  "13. John F. Kennedy was assassinated in",
+					  "14. Who fought in the war of 1812?",
+					  "15. Which country never had a colony in North America?",
+					  "16. What was the capital of Republican China (1928 - 1949)?",
+					  "17. What is the name of the explorer who led the first (proven) expedition around the globe?",
+					  "18. Where was Christopher Columbus from?",
+					  "19. Who was the first Prime Minister of Australia?",
+					  "20. Which French king built Versailles?",
+					  "21. Fifteen-century ruler Vlad III Dracula ('Vlad the Impaler') is best remembered today for inspiring Bram Stoker's novel Dracula. What land did he rule?",
+					  "22. Which Pope launched the First Crusade?",
+					  "23. Who was surnamed the 'Father of History'?",
+					  "24. What was the original name of New York?",
+					  "25. Of which country was Salazar dictator?",
+					  "26. By what name was Iran known before the 20th century?",
+					  "27. After whom was Virginia named?",
+					  "28. Who famously delcared 'Veni, vidi, vici' ?",
+					  "29. Of which country was James I the King before becoming King of England?",
+					  "30. Who founded Lisbon?",
+					  "31. Which Chinese dynasty moved the capital to Beijing?",
+					  "32. From which country did Singapore receive Independence?",
+					  "33. What is Sri Lanka's former name?",
+					  "34. Who was the founder of Afghanistan?",
+					  "35. Who founded the Red Cross?",
+					  "36. Which of those books was written by Caesar?",
+					  "37. What country won the first World Cup of football (soccer) in 1930?",
+					  "38. Rivers Tigris and Euphrates are associated with ?",
+					  "39. Which is considered as oldest civilization of the world ?",
+					  "40. Which among following is called "Gift of the Nile" ?",
+					  "41. Who is considered as the master of Greek comedy ?",
+					  "42. When ancient Olympic games first held ?",
+					  "43. Who is known as the father of Modern Medicine ?",
+					  "44. Rome was founded around ?",
+					  "45. Which was not an Roman Philosopher ?",
+					  "46. Who was among the famous Roman poets ?",
+					  "47. Marco Polo, Venetian traveller, travelled from Venice to China and Japan in :",
+					  "48. In which year Bartholomew Diaz reached Cape of Good Hope ?",
+					  "49. Vasco da Gama reached in India in he year ?",
+					  "50. America was discovered in ?",
+					  "51. Brazil was discovered in ?",
+					  "52. Who discovered North Pole ?",
+					  "53. Who is known as Man of Blood and Iron ?	",
+					  "54. Who was the author of the "American Declaration of Independence" ?",
+					  "55. The Renaissance scientist who explained how planets moved around the sun was ?",
+					  "56. Russian revolutionary, who founded the Communist Party was",
+					  "57. Who is also known as the founder of scientific socialism ?",
+					  "58. Who said that " Man is a political animal" ?",
+					  "59. In which country Aztec civilization was originated ?",
+					  "60. Who was the Emperor of Russia during Russia revolution ?",
+					  "61. The first news paper in the world was started by ?",
+					  "62. Adolf Hitler committed suicide in ?",
+					  "63. Before independence Ukraine was part of ?",
+					  "64. In which year, Alexander the Great become the king of Macedonia",
+					  "65. Who was the first Filipino recording artist?",
+					  "66. 	Who founded the la Liga Filipina?		",
+					  "67. 		Who was the first Miss Philippines?	",
+					  "68. Who was the first Filipino Olympian?",
+					  "69. Who designed the Rizal Monument?",
+					  "70.In 1908, the Philippines Premier State University was created by Act No. 1870. Name the university?",
+					  "71. He arrived in Cebu in 1565 to establish the first Spanish settlement in the Philippines, marking the beginning of Spain's colonization and Christianization of the archipelago. Who was he?",
+					  "72. According to some legends, which Welsh prince might have reached the New World in the 12th century?",
+					  "73. After Japan closed itself from foreigners in the 17th century, from which nationality were the only traders who had the right to trade with Japan in the bay of Osaka?",
+					  "74. Before the Meiji Restoration, who was the effective ruler of Japan?",
+					  "75. What was the name of Tokio before the Meiji restoration?",
+					  "76. Who was the founder of Afghanistan?",
+					  "77. Who is held to have christianized Axum (Ethiopia)?",
+					  "78. 	Who was this African Ruler?",
+					  "79. 	During WW1 in East Africa, which German colonel was able to evade and exasperate allied forces of 300 000 men with 14 000 men, who were never able to force him to surrender",
+					  "80. Who was this important '60's African political leader?",
+					  "81.	After what was the former British Colony Rhodesia named?",
+					  "82. 	Where is the oldest university in Europe?",
+					  "83.	Which parts of South America beside Surinam and the isles was colonized by the Dutch at some point?",
+					  "84. Which Egyptian Pharao tried to impose a monotheistic religion?",
+					  "85. Which people occupied the Nile delta during the Second Intermediary Period?",
+					  "86.	Who was the last truely Egyptian Pharao before the conquest of Alexander the Great?",
+					  "87.	Which Egyptian Queen is shown here?",
+					  "88. 	Of which 19th century battle is this a painting?",
+					  "89. Who founded the Red Cross?",
+					  "90. What other european language is related to Finnish?",
+					  "91.Who built the Great Zimbabwe (ruins shown below)?",
+					  "92. Where is the monument shown below located?",
+					  "93. To which Spanish kingdom does this flag belong?",
+					  "94.Who was the last Great Khan of Mongolia?",
+					  "95.What world-famous monument is shown below?",
+					  "96. Of which ancient civilization is the mural below typical?",
+					  "97. Of what Italian City was the flag below (with variations) the emblem?			",
+					  "98. What is the date of Charlemagne's coronation?",
+					  "99. 	Of which country was James I the King before becoming King of England?",
+					  "100. Who was the leader of the Russian provisional government after the fall of the Romanovs?		",
+					  ];
+					  
+                      var Options = [["1066","1509","1837"], 
+					  ["The Roman Empire","The British Empire","The Persian Empire"] , 
+					  ["George Washington","Abraham Lincoln","John F. Kennedy"] , 
+					  ["Argentina","New Zealand","Australia"],
+					  ["Napoleon","Hitler","Churchill"],
+					  ["Columbus","Raleigh","Drake"],
+					  ["Alexander Graham Bell","Sir Thomas Moore","Albert Einstein"],
+					  ["Greece","Canada","Russia"],
+					  ["Florence Nightingale","Elizabeth Fry","Margaret Thatcher"],
+					  ["Neil Armstrong","Winston Churchill","Martin Luther King"],
+					  ["1914","1917","1938"],
+					  ["Austria","Germany","France"],
+					  ["dallas","Austin","hungary"],
+					  ["Andrew Jackson","Napoleon","Otto von Bismarck"],
+					  ["Germany","Russia","Netherlands"],
+					  ["Nanjing","Shanghai","Beijing"],
+					  ["Fernão de Magalhães (Magellan)","Vasco da Gama","Cristobal Columbus"],
+					  ["Genoa","Venice","Portugal"],
+					  ["Edmund Barton","Harold Holt","John Howard"],
+					  ["Louis XIV","Louis XII"," François I"],
+					  ["Wallachia","Moldavia","Bulgaria"],
+					  ["Urban II","Pius V ","Alexius I "],
+					  ["Herodotus","Xenophon","Hesiodus"],
+					  ["New Amsterdam","New London","Fort Victoria"],
+					  ["Portugal","Chile","East Timor"],
+					  ["Persia","Ormouz","Kabyllistan"],
+					  ["Queen Elizabeth I","Queen Victoria ","Maria, the Holy Virgin"],
+					  ["Julius Caesar  ","Augustus","Cato the elder "],
+					  ["Scotland","Normandy","Wales "],
+					  ["The Phoenicians ","The Celts ","The Greeks "],
+					  ["Ming","Yuan","Qing"],
+					  ["Malaysia ","France","The United Kingdom "],
+					  ["Ceylon ","Madagascar","Dravidia"],
+					  ["Ahmad Shah Abdali ","Timur Shah Abdali ","Akbar Khan "],
+					  ["Henri Dunant ","Frédéric Passy ","Albert Schweizer "],
+					  ["De Bello Gallico ","Pro Marcello","Metamorphoses "],
+					  ["Uruguay","Germany","Brazil"],
+					  ["Mesopotamian Civilization","Chinese Civilization","Harappan Civilization"],
+					  ["Mesopotamian Civilization","Harappan Civilization","Egyptain Civilization"],
+					  ["Egypt","Iraq","India"],
+					  ["Aristophanes","Aeschylus","Sophocles"],
+					  ["776 BC","780 BC","790 BC"],
+					  ["Hippocrates","Erastosthenes","Euclid"],
+					  ["1000 BC","1600 BC","1400 BC"],
+					  ["Octavian","Lucretius","Seneca"],
+					  ["Virgil","Tacitus","Plinky"],
+					  ["1288 - 93","1285 - 90","1295 - 1301"],
+					  ["1487","1476","1469"],
+					  ["1498","1469","1473"],
+					  ["1492","1487","1482"],
+					  ["1500","1000","1400"],
+					  ["Robert Peary","Magellan","Captain James"],
+					  ["Bismarck","Napoleon","Ho Chi Minh"],
+					  ["Jefferson","Thomas paine","trotsky"],
+					  ["Kepler","Lenin","Engels"],
+					  ["Lenin","Napoleon","Karl Marx"],
+					  ["Karl Marx","Lenin","Engels"],
+					  ["Aristotle","Lenin","Plato"],
+					  ["Mexico","Egypt","Greece"],
+					  ["Nicholas II","Napoleon","Alexander II"],
+					  ["China","USA","India"],
+					  ["1945","1924","1942"],
+					  ["336","231","331"],
+					  ["England","France","Italy"],
+					  ["Maria Carpena. ","Jose Laurel","Andres Policarpio"],
+					  ["Jose Rizal","Jose Laurel","Andres Policarpio"],
+					  ["Evangeline Castro","Jose Laurel","Andres Policarpio"],
+					  ["David Nepomuceno","Jose Manalo","Bernardo Carpio"],					 
+					 ["Richard Kissling","Robert Green","Reymond Kennedy"],
+					  ["University of the Philippines","San Beda","Centro Escolar University"],
+					  ["Miguel Lopez de Legazpi","Miguel Lopez De Campo","Miguel Santos"],
+					  ["Prince Madog","Prince Meurig","Prince Gwynllyw"],					  
+					   ["Dutch","English","Spanish"],					   
+					    ["The Shogun","The Samurai","The Tokai"],						
+					 ["Edo","Takeda","Kyoto"],					 
+						  ["Maria Carpena. ","Jose Laurel","Andres Policarpio"],
+				   ["Ahmad Shah Abdali","Timur Shah Abdali","Akbar Khan "],				   
+						    ["King Ezana ","King Rastafari","King Agabe"],
+							["The Emperor of Ethiopia, Haile Selassie I ","The Dictator of Somalia, Birre ","The President of Kenya, Daniel Arap Moi "],							
+							  ["Paul von Lettow-Vorbeck ","Karol von Einem","Erwin Rommel "],							  
+				   ["Patrice Lumumba ","Mobutu ","Julius Nyerere "],				   
+							    ["Cecil Rhodes,who dreamt of a connection by rail between South Africa and Egypt","After the earl of Skye, John Walker Rhodes ","It means Land of the Elephants in a native language "],								
+								 ["Bologna","Rome","Oxford "],								 
+					 ["Guyana and a part of the Brazilian Coast","Guyana and the mouth of the La Plata river ","Guyana and French Guyana"],					 
+								   ["Akhenaten","Ramses II ","Amenhotep II"],								   
+					    ["The Hyksos ","The Palestines ","The Nubians "],						
+									 ["Nakhtnebef II ","Ahmose II ","Hakor "],									 
+									  ["Hatshepsut","Nefertiti ","Cleopatra"],									  
+							  ["The Battle of Balklava ","The Battle of Weissenburg","The Battle of Solferino "],							  
+									    ["Henri Dunant ","Albert Schweizer","Jean Paul Du Plessis "],										
+										 ["Hungarian","Swedish","Russian"],										 
+										  ["The Shona in the 13th century ","The Xhosa the 11th century ","The Bantu in the 17th century "],										  
+							   ["In southern England ","In southern Sweden","In Sicily, Italy"],							   
+						    ["Castile","Aragon","Leon"],							
+							 ["The Taj Mahal near Agra, India ","The Angkor Vat temple in Cambodia ","Humayun's Tomb in Delhi, India "],							 
+							["The Minoans  ","The Phoenicians ","The Romans "],							
+						  ["Venice","Genoa ","Naples"],						  
+						["800 AD ","700 AD ","600 AD "],						
+					  ["Scotland ","Normandy","Wales"],
+					  ["Prince Lvov","Georgii Plekhanov ","Vladimir Lenin "]];
+
+
+        quizbg1.onload = function(){
+                        context.drawImage(quizbg1, 0, 0);
+                        SetQuestions();
+        }//quizbg
+        quizbg1.src = "quizbg1.png";
+
+        SetQuestions = function(){
+                      Question=Questions[qnumber];
+                      CorrectAnswer=1+Math.floor(Math.random()*3);
+
+if(CorrectAnswer==1){Option1=Options[qnumber][0];Option2=Options[qnumber][1];Option3=Options[qnumber][2];}    
+					var time=document.getElementById("time").value=m=10;
+					m++;
+if(CorrectAnswer==2){Option1=Options[qnumber][2];Option2=Options[qnumber][0];Option3=Options[qnumber][1];}
+
+if(CorrectAnswer==3){Option1=Options[qnumber][1];Option2=Options[qnumber][2];Option3=Options[qnumber][0];}
+
+                      context.textBaseline = "middle";
+                      context.font = "18pt Calibri,Arial";
+                      context.fillText(Question,20,textpos1);
+                      context.font = "18pt Calibri,Arial";
+                      context.fillText(Option1,20,textpos2);
+                      context.fillText(Option2,20,textpos3);
+                      context.fillText(Option3,20,textpos4);
+      }//SetQuestions
+
+      canvas.addEventListener('click',ProcessClick,false);
+
+      function ProcessClick(ev) {
+                      my=ev.y-canvas.offsetTop;
+                      if(ev.y == undefined){
+                                      my = ev.pageY - canvas.offsetTop; 
+                      }
+                      if(lock){
+                                      ResetQ();
+                      }//if lock
+
+                      else{
+                                      if(my>130 && my<250){GetFeedback(1);}
+                                      if(my>290 && my<390){GetFeedback(2);}
+                                      if(my>430 && my<470){GetFeedback(3);}
+                      }//!lock
+}//ProcessClick
+
+      GetFeedback = function(a){
+                      if(a==CorrectAnswer){
+					  // ung 0 -400 un ung sa check , ung 75 ung x ,, 110 ung postion sa a 
+                              context.drawImage(quizbg1, 0,555,75,70,480,140+(140*(a-1)),75,70);
+							 
+							                   
+                              rightanswers++;
+							  document.getElementById("score").value=right*1;   
+							  
+							  right++;
+							
+                                     
+                        }
+                        else{
+                              context.drawImage(quizbg1, 75,555,75,70,480,140+(140*(a-1)),75,70);
+					
+                              wronganswers++;
+							  wrong++;
+							  
+							  clearTimeout(myTime);	
+                      canvas.removeEventListener('click',ProcessClick,false);
+					context.drawImage(quizbg1, 0,0,550,100,0,0,550,560);
+                      context.font = "20pt Calibri,Arial";
+                      context.fillText("Try again!",20,100);
+
+                        }
+                        lock=true;
+                        context.font = "20pt Calibri,Arial";
+						context.textBaseline = "middle";
+                        context.fillText("continue",20,520);
+      }//get feedback
+
+      ResetQ= function(){
+                      lock=false;
+                      context.clearRect(0,0,600,400);
+                      qnumber++;
+                      if(qnumber==Questions.length){EndQuiz();}
+                      else{
+                            context.drawImage(quizbg1, 0, 0);
+                            SetQuestions();}
+                      }
+
+      EndQuiz=function(){
+	  
+	  clearInterval(myTime);
+					  clearTimeout(myTime);	
+                      canvas.removeEventListener('click',ProcessClick,false);
+                      context.drawImage(quizbg1, 0,0,550,100,0,0,550,560);
+                      context.font = "20pt Calibri,Arial";
+                      context.fillText("Try again!",20,100);
+                      context.font = "16pt Calibri,Arial";
+                      context.fillText("Correct answers: "+String(rightanswers),20,200);
+                      context.fillText("Wrong answers: "+String(wronganswers),20,240);
+					  context.fillText("Time Left: "+String((m))+'\n'+ "secs",20,280);
+					  
+
+					  
+                      }
+};//windowonload
+
+</script>
+
+</head>
+ <body>
+
+
+ 
+
+
+ <p class="auto-style7" style="height: 38px">
+ &nbsp;&nbsp;<span class="auto-style9">TIME:&nbsp;&nbsp;&nbsp; </span>
+<input id="time" name="Text1" class="auto-style3"
+type="text" value="0" size="5" style="width:38px; height:32px"></p>
+
+
+<p class="auto-style7" style="height: 38px">
+&nbsp;&nbsp;<span class="auto-style9">SCORE:&nbsp;&nbsp;&nbsp; </span>
+<input id="score" name="Text1" class="auto-style3"
+type="text" value="0" size="5" style="width:38px; height:32px"></p>
+
+<div id="ccontainer" class="auto-style10">
+<canvas id="myCanvas" width="1000" height="1000" class="auto-style8"></canvas>
+</div>
+
+
+ <div class="auto-style1" >
+		
+
+			<br>
+		
+
+			<br>
+		
+		<a href="quiz.html" onclick="cleartime();"> 
+		<img src="images/retry.png"  height="126" style="float: center" width="689" /></a></div>
+		
+		<br><br><br><br>
+		 <div class="auto-style1" >
+			<a href="menu.html" onclick="cleartime();"> 
+		<img src="images/back.png"  height="126" style="float: center" width="689" /></a></div>
+		
+
+
+</body>
+</html>
+
+ 
